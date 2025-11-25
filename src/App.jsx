@@ -7,25 +7,32 @@ import AvatarGame from "./pages/Questionnaire/AvatarGame";
 import ResultsPage from "./pages/Questionnaire/ResultsPage";
 import AboutUsPage from "./pages/About";
 import OptionsInstructionsPage from "./pages/Questionnaire/OptionsInstructionsPage";
-import ScrollToTop from "./ScrollToTop";
-
+import ScrollToTop from "./components/UI/ScrollToTop";
+import AnimatedLayout from "./components/UI/AnimetedLayout";
+import Header from "./components/Layout/Header";
+import Footer from "./components/Layout/Footer";
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <div className="App">
+        <Header />
+
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/instructions" element={<Instructions />} />
-          <Route path="/avatar-game" element={<AvatarGame />} />
-          <Route path="/questionnaire" element={<QuestionnairePage />} />
-          <Route path="/results" element={<ResultsPage />} />
-          <Route path="/about-us" element={<AboutUsPage />} />
-          <Route
-            path="/instructions-options"
-            element={<OptionsInstructionsPage />}
-          />
+          <Route element={<AnimatedLayout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/instructions" element={<Instructions />} />
+            <Route path="/avatar-game" element={<AvatarGame />} />
+            <Route path="/questionnaire" element={<QuestionnairePage />} />
+            <Route path="/results" element={<ResultsPage />} />
+            <Route path="/about-us" element={<AboutUsPage />} />
+            <Route
+              path="/instructions-options"
+              element={<OptionsInstructionsPage />}
+            />
+          </Route>
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

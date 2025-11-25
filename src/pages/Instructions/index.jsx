@@ -31,7 +31,6 @@ const Instructions = () => {
 
   return (
     <div className="instructions-page">
-      <Header />
 
       <main className="instructions-main">
         {/* Conteúdo Centralizado */}
@@ -76,7 +75,6 @@ const Instructions = () => {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 };

@@ -48,7 +48,6 @@ const OPTIONS_GUIDE = [
 const OptionsInstructionsPage = () => {
   return (
     <div className="instructions-page-container">
-      <Header />
 
       <main className="instructions-main">
         <div className="instructions-content">
@@ -83,7 +82,6 @@ const OptionsInstructionsPage = () => {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

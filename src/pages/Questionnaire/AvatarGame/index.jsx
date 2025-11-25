@@ -111,7 +111,6 @@ const AvatarGame = () => {
 
   return (
     <div className="avatar-game-page">
-      <Header />
       <main className="avatar-game-main">
         <div className="avatar-game-container">
           <h1 className="avatar-game-title">
@@ -164,7 +163,6 @@ const AvatarGame = () => {
           </div>
         </div>
       </main>
-      <Footer />
     </div>
   );
 };

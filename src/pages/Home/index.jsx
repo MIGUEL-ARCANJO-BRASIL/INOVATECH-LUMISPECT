@@ -13,8 +13,6 @@ const Home = () => {
   const navigate = useNavigate();
   return (
     <div className="home-container">
-      <Header />
-
       {/* 2. CONTEÚDO PRINCIPAL (HERO) */}
       <div className="hero-container">
         <div className="hero-content">
@@ -98,7 +96,6 @@ const Home = () => {
       </section>
 
       {/* 4. FOOTER (Componente) */}
-      <Footer />
     </div>
   );
 };

@@ -205,7 +205,6 @@ const QuestionnairePage = () => {
 
   return (
     <div className="questionnaire-page">
-      <Header />
 
       <main className="questionnaire-main">
         <div className="questionnaire-container">
@@ -275,7 +274,6 @@ const QuestionnairePage = () => {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 };

@@ -7,7 +7,6 @@ import "./style.css"; // Importa os estilos específicos desta página
 const AboutUsPage = () => {
   return (
     <div className="about-page">
-      <Header />
 
       <main className="about-main">
         <div className="about-container">
@@ -86,7 +85,6 @@ const AboutUsPage = () => {
         </div>
       </main>
 
-      <Footer />
     </div>
   );
 };

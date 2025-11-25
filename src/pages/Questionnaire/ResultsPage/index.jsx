@@ -165,7 +165,6 @@ const ResultsPage = () => {
   if (!result) {
     return (
       <div className="results-page loading-page">
-        <Header />
         <div className="loading-content">
           <h1>Calculando Resultados Lumispect...</h1>
           <i
@@ -173,7 +172,6 @@ const ResultsPage = () => {
             style={{ fontSize: "3em", color: "#4b8cf5" }}
           ></i>
         </div>
-        <Footer />
       </div>
     );
   }
@@ -208,7 +206,6 @@ const ResultsPage = () => {
 
   return (
     <div className="results-page">
-      <Header />
       <main className="results-main">
         <div className="results-container">
           <h1 className="results-title">
@@ -329,7 +326,6 @@ const ResultsPage = () => {
           </div>
         </div>
       </main>
-      <Footer />
       {/* 4. Renderizar o novo modal no final do componente */}
       <ModalSelfknowledge
         isOpen={showModalSelfknowledge}
