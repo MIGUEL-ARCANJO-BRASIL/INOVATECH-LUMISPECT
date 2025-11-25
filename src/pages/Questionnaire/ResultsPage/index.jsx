@@ -275,7 +275,7 @@ const ResultsPage = () => {
                     className="call-to-action-button"
                   >
                     <i className="fas fa-search-location"></i> Ver Clínicas e
-                    Profissionais Parceiros
+                    Profissionais
                   </button>
                 ) : (
                   // Ação genérica para pontuação baixa/moderada

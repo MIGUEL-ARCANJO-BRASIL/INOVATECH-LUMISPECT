@@ -1,20 +1,18 @@
-/* Defina variáveis globais em um arquivo separado, se necessário (ex: variables.css) */
-/* ==================================== */
 /* HEADER ESTILOS */
-/* ==================================== */
 .main-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--altura-header); /* Importante para o cálculo do padding */
-  background-color: #3a7ae0; /* Azul do seu original */
+  height: var(--altura-header);
+  background-color: #3a7ae0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000; /* Garante que fique acima de tudo */
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 40px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .header-logo {
@@ -54,18 +52,129 @@
   width: 100%;
 }
 
-/* RESPONSIVIDADE (Ajustada para o Header) */
+/* Botão hamburger */
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 999px;
+  transition: background-color 0.2s ease;
+}
+
+.hamburger-btn span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+  margin: 4px 0;
+  border-radius: 999px;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+}
+
+/* Hover leve no botão */
+.hamburger-btn:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+/* Animação do ícone para "X" */
+.hamburger-btn.is-open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger-btn.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-btn.is-open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Overlay escuro por trás do menu */
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0); /* transparente inicialmente */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, background 0.3s ease, visibility 0.3s ease;
+  z-index: 900;
+}
+
+.mobile-overlay.show {
+  background: rgba(15, 23, 42, 0.45);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Menu mobile moderno (slide + blur) */
+.mobile-nav.modern {
+  position: fixed;
+  top: var(--altura-header);
+  right: 0;
+  width: 70%;
+  max-width: 280px;
+  height: calc(100vh - var(--altura-header));
+  background: rgba(15, 23, 42, 0.94);
+  backdrop-filter: blur(16px);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 950;
+}
+
+.mobile-nav.modern.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.mobile-nav.modern a {
+  color: #e5e7eb;
+  text-decoration: none;
+  font-weight: 600;
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+}
+
+.mobile-nav.modern a:hover {
+  background-color: rgba(59, 130, 246, 0.18);
+  color: #ffffff;
+  transform: translateX(2px);
+}
+
+/* RESPONSIVIDADE */
 @media (max-width: 768px) {
   .main-header {
     padding: 0 20px;
-    height: 50px; /* Reduz a altura em telas menores */
+    height: 56px;
   }
 
   .header-nav {
-    display: none; /* Oculta a navegação principal em telas pequenas */
+    display: none;
   }
 
   .header-logo {
     font-size: 1.3em;
+  }
+
+  .hamburger-btn {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-nav {
+    display: none;
+  }
+
+  .mobile-overlay {
+    display: none;
   }
 }
