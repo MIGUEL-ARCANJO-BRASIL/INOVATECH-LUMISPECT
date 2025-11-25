@@ -1,0 +1,26 @@
+.back-button-global {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.18);
+  color: #333;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 14px rgba(5, 8, 22, 0.3);
+  transition: background-color 0.2s ease, transform 0.1s ease,
+    box-shadow 0.2s ease;
+}
+.back-button-global:hover {
+  background-color: rgba(255, 255, 255, 0.26);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(5, 8, 22, 0.35);
+}
+
+.back-button-icon {
+  font-size: 0.9rem;
+}

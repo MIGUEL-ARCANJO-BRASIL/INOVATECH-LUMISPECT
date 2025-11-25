@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 120px 40px 80px 40px;
+  padding: 110px 40px 40px 40px; /* ajustado: menos espaço embaixo */
   max-width: 1200px;
   width: 100%;
   min-height: 80vh;
@@ -38,6 +38,7 @@
   line-height: 1.6;
   margin-bottom: 40px;
 }
+
 .buttons-section {
   display: flex;
   gap: 20px;
@@ -168,6 +169,7 @@
   color: var(--cor-secundaria);
   line-height: 1.5;
 }
+
 /* Definição da Animação de Pulsação */
 @keyframes pulse-aviso {
   0% {
@@ -184,9 +186,14 @@
   }
 }
 
-/* Estilos do Aviso Educativo (Correção da Sintaxe da Animação) */
+/* Aviso Educativo */
+.div-aviso-educativo {
+  margin-top: 10px; /* aproximado do hero */
+  margin-bottom: 30px; /* menos espaço abaixo */
+  text-align: center;
+}
+
 .aviso-educativo {
-  margin-top: 30px;
   font-size: 1.2em;
   color: #d9534f;
   font-weight: 600;
@@ -195,16 +202,9 @@
   padding: 10px 20px;
   border-radius: 5px;
   background-color: #fffafa;
-  /* Largura fixa para desktop/telas grandes */
   width: 800px;
-
-  /* Animação corrigida e aplicada no desktop */
+  margin-top: 0; /* tirado o espaço extra */
   animation: pulse-aviso 1s infinite;
-}
-
-.div-aviso-educativo {
-  margin-bottom: 50px;
-  text-align: center;
 }
 
 /* ==================================== */
@@ -212,34 +212,35 @@
 /* ==================================== */
 @media (max-width: 768px) {
   .hero-container {
-    flex-direction: column; /* Pilha em telas pequenas */
+    flex-direction: column;
     padding: 80px 20px;
     min-height: auto;
     text-align: center;
-    margin-top: var(--altura-header); /* ESPAÇO para o header */
+    margin-top: var(--altura-header);
   }
 
   .hero-content {
     flex: none;
     max-width: 100%;
-    order: 2; /* Coloca o conteúdo abaixo da imagem (ou no topo, dependendo do design) */
+    order: 2;
     text-align: center;
     margin-top: 0;
   }
 
   .logo-section {
-    position: static; /* Remove o posicionamento absoluto em mobile */
+    position: static;
     margin-bottom: 20px;
   }
+
   .logo-name {
     font-size: 2.5em;
-    margin-top: 0; /* Garante que o título está no topo do content-section em mobile */
-    margin-bottom: 15px; /* Ajuste o espaçamento */
+    margin-top: 0;
+    margin-bottom: 15px;
   }
 
   .introduction-text {
     font-size: 1.1em;
-    margin-top: 0; /* Já que o h1 está logo acima */
+    margin-top: 0;
   }
 
   .buttons-section {
@@ -247,14 +248,14 @@
   }
 
   .hero-image {
-    order: 1; /* Coloca a imagem no topo em mobile */
+    order: 1;
     max-width: 90%;
     margin-bottom: 30px;
   }
 
   .image-placeholder img {
     width: 100%;
-    max-width: 300px; /* Limita o tamanho da imagem em mobile */
+    max-width: 300px;
     height: auto;
   }
 
@@ -265,18 +266,16 @@
 
   .div-aviso-educativo {
     width: 100%;
-    padding: 0 20px; /* Adiciona padding lateral para que o aviso não cole nas bordas */
+    padding: 0 20px;
     box-sizing: border-box;
-    margin-bottom: 30px; /* Ajusta margem inferior em mobile */
+    margin-bottom: 30px;
+    margin-top: 10px; /* também mais perto do hero em mobile */
   }
 
-  /* 2. Ajuste a largura do ELEMENTO DO AVISO para 100% (dentro do padding) */
   .aviso-educativo {
-    width: 100%; /* Ocupa a largura total disponível */
-    font-size: 1em; /* Reduz o tamanho da fonte para mobile */
-    padding: 15px 15px; /* Ajusta o padding interno */
-
-    /* A ANIMAÇÃO CONTINUA FUNCIONANDO */
+    width: 100%;
+    font-size: 1em;
+    padding: 15px 15px;
     animation: pulse-aviso 2s infinite;
   }
 }

@@ -23,6 +23,9 @@
   letter-spacing: 1px;
 }
 
+.header-logo:hover {
+  color: var(--amarelo-destaque);
+}
 .header-nav a {
   color: white;
   text-decoration: none;

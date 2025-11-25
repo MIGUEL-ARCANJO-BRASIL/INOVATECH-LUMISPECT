@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Header from "../../components/Layout/Header";
 import Footer from "../../components/Layout/Footer";
 import "./style.css"; // Importa o CSS da página
+import BackButton from "../../components/UI/BackButton";
 
 const Instructions = () => {
   // Array para o conteúdo dos 4 pilares - REFORMULADO PARA QUESTIONÁRIO
@@ -31,10 +32,13 @@ const Instructions = () => {
 
   return (
     <div className="instructions-page">
-
       <main className="instructions-main">
         {/* Conteúdo Centralizado */}
         <div className="instructions-content">
+          {/* <div style={{ textAlign: "left", marginBottom: "20px" }}>
+            <BackButton />
+          </div> */}
+
           <h1 className="instructions-title">
             <span className="title-prefix">Guia para o</span>
             <span className="title-highlight"> Questionário Lumispect</span>
@@ -74,7 +78,6 @@ const Instructions = () => {
           </div>
         </div>
       </main>
-
     </div>
   );
 };
