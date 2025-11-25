@@ -384,7 +384,20 @@
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
+.question-card.question-fade {
+  animation: questionFadeIn 1020ms ease-out;
+}
 
+@keyframes questionFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
 /* ================================= */
 /* 7. RESPONSIVIDADE (Total) */
 /* ================================= */

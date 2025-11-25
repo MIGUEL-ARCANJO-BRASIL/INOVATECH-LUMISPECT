@@ -139,18 +139,7 @@ const QuestionnairePage = () => {
     return index < TOTAL_QUESTIONS ? index : 0;
   });
 
-  // Resposta apenas da pergunta atual (para controle visual)
-  // Nota: Este estado 'currentAnswer' não é usado na renderização final (isSelected),
-  // mas o 'useEffect' abaixo tenta limpá-lo ao mudar de questão.
-  const [_currentAnswer, setCurrentAnswer] = useState(null);
-
   const navigate = useNavigate();
-
-  // Sempre que mudar de pergunta, zera a seleção visual (embora ineficaz,
-  // pois a renderização usa 'answers[currentQuestion.id]').
-  useEffect(() => {
-    setCurrentAnswer(null);
-  }, [currentQuestionIndex]);
 
   const handleSubmit = useCallback(
     (finalAnswers) => {
@@ -176,7 +165,7 @@ const QuestionnairePage = () => {
       if (nextIndex < TOTAL_QUESTIONS) {
         const nextQuestionId = allQuestions[nextIndex].id;
         const cleanedAnswers = { ...newAnswers };
-        delete cleanedAnswers[nextQuestionId]; // limpa qualquer lixo antigo (mantendo o estado limpo)
+        delete cleanedAnswers[nextQuestionId];
         setAnswers(cleanedAnswers);
         setCurrentQuestionIndex(nextIndex);
       } else {
@@ -195,11 +184,9 @@ const QuestionnairePage = () => {
       delete newAnswers[id];
       setAnswers(newAnswers);
     } else {
-      // 1. Adiciona a resposta ao estado temporário
       newAnswers = { ...answers, [id]: value };
       setAnswers(newAnswers);
 
-      // 2. Chama a próxima pergunta (e o avanço é acionado)
       handleNext(newAnswers);
     }
   };
@@ -235,13 +222,9 @@ const QuestionnairePage = () => {
                 <i className="fas fa-arrow-left"></i> Voltar
               </button>
 
-              {/* VITAL: Adicionar a 'key' do ID da pergunta. 
-                Isso força o React a tratar este div como um elemento novo 
-                a cada mudança de pergunta, resolvendo o problema visual de seleção.
-              */}
               <div
                 key={currentQuestion.id}
-                className="question-card single-question-view"
+                className="question-card single-question-view question-fade"
               >
                 <p className="question-progress">
                   Pergunta {currentQuestionIndex + 1} de {TOTAL_QUESTIONS} (

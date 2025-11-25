@@ -7,17 +7,12 @@ import AvatarGame from "./pages/Questionnaire/AvatarGame";
 import ResultsPage from "./pages/Questionnaire/ResultsPage";
 import AboutUsPage from "./pages/About";
 import OptionsInstructionsPage from "./pages/Questionnaire/OptionsInstructionsPage";
-
-const References = () => (
-  <div style={{ padding: "4rem", textAlign: "center" }}>
-    <h1>Referências</h1>
-    <p>Página em desenvolvimento</p>
-  </div>
-);
+import ScrollToTop from "./ScrollToTop";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
@@ -26,7 +21,6 @@ function App() {
           <Route path="/questionnaire" element={<QuestionnairePage />} />
           <Route path="/results" element={<ResultsPage />} />
           <Route path="/about-us" element={<AboutUsPage />} />
-          <Route path="/references" element={<References />} />
           <Route
             path="/instructions-options"
             element={<OptionsInstructionsPage />}
@@ -36,5 +30,4 @@ function App() {
     </Router>
   );
 }
-
 export default App;
