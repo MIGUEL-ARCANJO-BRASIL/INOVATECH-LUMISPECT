@@ -4,8 +4,6 @@ import "./style.css";
 
 // Importação da logo (tratada pelo bundler no frontend, mas seu valor pode ser usado
 // no backend dependendo da sua configuração. Mantive a importação do seu código original).
-import LOGO_LUMIS from "../../../../../../assets/logo-lumis.png";
-const LOGO_FOR_PDF = LOGO_LUMIS; // Se você precisar da URL/caminho gerado pelo bundler no payload
 
 /**
  * Função auxiliar para gerar conteúdo de texto formatado para compartilhamento.
@@ -94,7 +92,6 @@ const ModalDetailsResult = ({
               recommendation: result.recommendation,
               description: result.description || "Descrição não fornecida.",
             },
-            logoUrl: LOGO_FOR_PDF,
           }),
         }
       );
@@ -110,18 +107,36 @@ const ModalDetailsResult = ({
       const blob = await response.blob();
 
       // 3. Cria um link temporário para forçar o download no navegador
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "Lumispect_Relatorio_Detalhado.pdf";
+      if (
+        navigator.canShare &&
+        navigator.canShare({
+          files: [
+            new File([blob], "Lumispect_Relatorio_Detalhado.pdf", {
+              type: "application/pdf",
+            }),
+          ],
+        })
+      ) {
+        const file = new File([blob], "Lumispect_Relatorio_Detalhado.pdf", {
+          type: "application/pdf",
+        });
 
-      // Dispara o clique e limpa
-      document.body.appendChild(a);
-      a.click();
-      a.remove();
-      window.URL.revokeObjectURL(url); // Libera a memória
-
-      console.log("PDF baixado com sucesso!");
+        await navigator.share({
+          files: [file],
+          title: "Relatório Lumispect",
+          text: "Segue o relatório Lumispect em anexo.",
+        });
+      } else {
+        // fallback: só faz download normal
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "Lumispect_Relatorio_Detalhado.pdf";
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        window.URL.revokeObjectURL(url);
+      }
     } catch (error) {
       console.error("Falha ao baixar o PDF:", error);
     } finally {
