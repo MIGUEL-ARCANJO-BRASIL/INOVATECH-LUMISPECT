@@ -6,6 +6,8 @@ import "./style.css"; // Importa os estilos principais
 import ClinicsModal from "./Components/Modal/ModalClinics";
 import ModalDetailsResult from "./Components/Modal/ModalDetailsResult";
 import ModalSelfknowledge from "./Components/Modal/ModalSelfknowledge";
+import LoadingOverlay from "../../../components/UI/LoadingOverlay";
+import AnimatedLayout from "../../../components/UI/AnimetedLayout";
 
 // Chaves de armazenamento
 const STORAGE_KEY_ANSWERS = "questionnaireResultsFinal"; // ✅ LÊ DO LOCALSTORAGE
@@ -156,7 +158,7 @@ const ResultsPage = () => {
         localStorage.removeItem(STORAGE_KEY_ANSWERS);
         navigate("/questionnaire");
       }
-    }, 100);
+    }, 1500);
 
     return () => clearTimeout(timer);
   }, [navigate]);
@@ -164,14 +166,8 @@ const ResultsPage = () => {
   // Placeholder enquanto carrega
   if (!result) {
     return (
-      <div className="results-page loading-page">
-        <div className="loading-content">
-          <h1>Calculando Resultados Lumispect...</h1>
-          <i
-            className="fas fa-spinner fa-spin loading-icon"
-            style={{ fontSize: "3em", color: "#4b8cf5" }}
-          ></i>
-        </div>
+      <div className="results-page">
+        <LoadingOverlay text="Calculando resultados Lumispect..." />
       </div>
     );
   }
@@ -205,7 +201,7 @@ const ResultsPage = () => {
   }
 
   return (
-    <div className="results-page">
+    <div className="results-page results-fade">
       <main className="results-main">
         <div className="results-container">
           <h1 className="results-title">
