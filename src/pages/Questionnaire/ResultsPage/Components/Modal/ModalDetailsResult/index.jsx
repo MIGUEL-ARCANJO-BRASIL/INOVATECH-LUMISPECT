@@ -76,25 +76,28 @@ const ModalDetailsResult = ({
     setIsDownloading(true);
 
     try {
-      const response = await fetch("http://localhost:3001/generate-pdf", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        // DADOS ENVIADOS
-        body: JSON.stringify({
-          answers,
-          questions, // Array completo de questões
-          result: {
-            // Objeto 'result' contendo tudo
-            score: result.score,
-            category: result.category,
-            recommendation: result.recommendation,
-            description: result.description || "Descrição não fornecida.",
+      const response = await fetch(
+        "https://lumispect-api.onrender.com/generate-pdf",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
           },
-          logoUrl: LOGO_FOR_PDF,
-        }),
-      });
+          // DADOS ENVIADOS
+          body: JSON.stringify({
+            answers,
+            questions, // Array completo de questões
+            result: {
+              // Objeto 'result' contendo tudo
+              score: result.score,
+              category: result.category,
+              recommendation: result.recommendation,
+              description: result.description || "Descrição não fornecida.",
+            },
+            logoUrl: LOGO_FOR_PDF,
+          }),
+        }
+      );
 
       if (!response.ok) {
         const errorText = await response.text();
