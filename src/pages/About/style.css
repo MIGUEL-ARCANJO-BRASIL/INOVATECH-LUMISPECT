@@ -1,0 +1,162 @@
+.about-page {
+  margin-top: 50px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--fundo-cinza-gelo);
+}
+
+.about-main {
+  flex-grow: 1;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.about-container {
+  max-width: 900px;
+  width: 100%;
+}
+
+.about-title {
+  font-size: 3em;
+  font-weight: 800;
+  color: var(--texto-principal);
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.about-title .title-highlight {
+  color: var(--destaque-azul);
+}
+
+.about-subtitle {
+  font-size: 1.5em;
+  font-weight: 300;
+  color: var(--texto-principal);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.divider {
+  width: 150px;
+  height: 4px;
+  background-color: var(--amarelo-destaque);
+  border: none;
+  margin: 20px auto 50px;
+  border-radius: 5px;
+}
+
+/* ================================= */
+/* SEÇÕES DE CONTEÚDO */
+/* ================================= */
+.about-section {
+  background-color: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: var(--sombra-leve);
+  margin-bottom: 30px;
+  text-align: justify;
+}
+
+.section-heading {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: var(--destaque-azul);
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon-lg {
+  font-size: 1.2em;
+}
+
+.section-text {
+  font-size: 1.1em;
+  line-height: 1.7;
+  color: var(--texto-principal);
+  margin-bottom: 15px;
+}
+
+/* Estilo para a seção de Disclaimer */
+.disclaimer-box {
+  margin-top: 20px;
+  padding: 15px;
+  border-left: 5px solid #dc3545; /* Cor de alerta: Vermelho */
+  background-color: #fcebeb; /* Fundo suave */
+  color: #333;
+  font-weight: 500;
+}
+
+/* ================================= */
+/* CALL TO ACTION (CTA) */
+/* ================================= */
+.cta-section {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 30px;
+  background-color: var(--destaque-azul);
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: 700;
+  transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(75, 140, 245, 0.3);
+}
+
+.cta-button:hover {
+  background-color: #3a68c0;
+  transform: translateY(-2px);
+}
+
+.references-link {
+  display: block;
+  margin-top: 20px;
+  color: var(--destaque-azul);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+/* ================================= */
+/* RESPONSIVIDADE */
+/* ================================= */
+@media (max-width: 768px) {
+  .about-main {
+    padding: 40px 15px;
+  }
+
+  .about-title {
+    font-size: 2.5em;
+  }
+
+  .about-subtitle {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+  }
+
+  .about-section {
+    padding: 20px;
+  }
+
+  .section-heading {
+    font-size: 1.5em;
+  }
+
+  .section-text {
+    font-size: 1em;
+  }
+
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

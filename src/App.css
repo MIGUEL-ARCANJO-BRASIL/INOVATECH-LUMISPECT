@@ -1,0 +1,74 @@
+:root {
+  --fundo-cinza-gelo: #f4f6fa;
+  --destaque-azul: #4b8cf5;
+  --texto-principal: #333;
+  --sombra-clara: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --cor-secundaria: #666;
+  --azul-claro: #e0ebfd;
+  --amarelo-claro: #fff5cc;
+  --altura-header: 60px;
+  --amarelo-destaque: #f6d860;
+  --altura-header: 60px;
+  --fundo-card: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+
+  font-family: "Codec Pro Family", sans-serif;
+  font-weight: 400;
+  background-color: var(--fundo-cinza-gelo);
+  color: var(--texto-principal);
+  min-height: 100vh;
+}
+
+body.has-fixed-header {
+  padding-top: var(--altura-header);
+}
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--altura-header);
+  background-color: #fff;
+  box-shadow: var(--sombra-clara);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000;
+}
+@font-face {
+  font-family: "Codec Pro Family"; /* Nome ÚNICO */
+  src: url("./assets/fonts/CodecPro-Regular.ttf");
+  font-weight: 400; /* Peso normal */
+  font-style: normal;
+}
+
+/* Versão Extra Bold */
+@font-face {
+  font-family: "Codec Pro Family"; /* Mesmo Nome ÚNICO */
+  src: url("./assets/fonts/Codec Pro ExtraBold.ttf");
+  font-weight: 800; /* Peso Extra Bold */
+  font-style: normal;
+}
+/* App.css (ou o arquivo global) */
+
+/* Garante que o container raiz do React preencha 100% do body */
+#root,
+#app {
+  width: 100%;
+  min-height: 100vh;
+}

@@ -1,0 +1,282 @@
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--fundo-cinza-gelo);
+}
+
+/* ==================================== */
+/* HERO SECTION - SEGUNDA LOGO + IMAGEM */
+/* ==================================== */
+/* HERO SECTION - COM ESPAÇO PARA O HEADER FIXO */
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 120px 40px 80px 40px;
+  max-width: 1200px;
+  width: 100%;
+  min-height: 80vh;
+  gap: 60px;
+  margin-top: 0;
+  position: relative;
+}
+
+.logo-name {
+  font-size: 4.7em;
+  font-weight: 800;
+  color: var(--destaque-azul);
+  margin-bottom: 20px;
+  padding: 0;
+  line-height: 1;
+}
+
+.introduction-text {
+  font-size: 1.3em;
+  padding: 0;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+.buttons-section {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.button {
+  text-decoration: none;
+  padding: 15px 30px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--sombra-clara);
+  cursor: pointer;
+}
+
+.primary-button {
+  background-color: var(--amarelo-destaque);
+  color: #333;
+  border: 2px solid var(--amarelo-destaque);
+}
+
+.primary-button:hover {
+  color: #222;
+  background-color: #f7e37c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.secondary-button {
+  background-color: transparent;
+  color: var(--destaque-azul);
+  border: 2px solid var(--destaque-azul);
+}
+
+.secondary-button:hover {
+  background-color: rgba(75, 140, 245, 0.05);
+  transform: translateY(-1px);
+}
+
+/* Lado Direito - Imagem */
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 500px;
+}
+
+.image-placeholder::before {
+  content: "🎮";
+  font-size: 4em;
+  opacity: 0.3;
+  position: absolute;
+  display: none;
+}
+
+.image-placeholder:empty::before {
+  display: flex;
+}
+
+/* ==================================== */
+/* SEÇÃO SOBRE O PROJETO */
+/* ==================================== */
+#sobre-projeto {
+  background-color: var(--azul-claro);
+  width: 100%;
+  padding: 80px 20px;
+  text-align: center;
+  border-top: 5px solid var(--destaque-azul);
+}
+
+#sobre-projeto h2 {
+  font-size: 2.5em;
+  color: var(--destaque-azul);
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.sobre-missao {
+  font-size: 1.3em;
+  color: var(--cor-secundaria);
+  max-width: 800px;
+  margin: 0 auto 50px;
+  font-style: italic;
+}
+
+.pilares-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.pilar-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+  width: 30%;
+  min-width: 280px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+}
+
+.pilar-card:hover {
+  transform: translateY(-5px);
+}
+
+.pilar-card i {
+  font-size: 2.5em;
+  color: var(--destaque-azul);
+  margin-bottom: 15px;
+}
+
+.pilar-card h3 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  color: var(--texto-principal);
+}
+
+.pilar-card p {
+  font-size: 1em;
+  color: var(--cor-secundaria);
+  line-height: 1.5;
+}
+/* Definição da Animação de Pulsação */
+@keyframes pulse-aviso {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(217, 83, 79, 0.7);
+  }
+  70% {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 10px rgba(217, 83, 79, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(217, 83, 79, 0);
+  }
+}
+
+/* Estilos do Aviso Educativo (Correção da Sintaxe da Animação) */
+.aviso-educativo {
+  margin-top: 30px;
+  font-size: 1.2em;
+  color: #d9534f;
+  font-weight: 600;
+  border: 1px solid #d9534f;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #fffafa;
+  /* Largura fixa para desktop/telas grandes */
+  width: 800px;
+
+  /* Animação corrigida e aplicada no desktop */
+  animation: pulse-aviso 1s infinite;
+}
+
+.div-aviso-educativo {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+/* ==================================== */
+/* RESPONSIVIDADE (Ajustada para a Home) */
+/* ==================================== */
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column; /* Pilha em telas pequenas */
+    padding: 80px 20px;
+    min-height: auto;
+    text-align: center;
+    margin-top: var(--altura-header); /* ESPAÇO para o header */
+  }
+
+  .hero-content {
+    flex: none;
+    max-width: 100%;
+    order: 2; /* Coloca o conteúdo abaixo da imagem (ou no topo, dependendo do design) */
+    text-align: center;
+    margin-top: 0;
+  }
+
+  .logo-section {
+    position: static; /* Remove o posicionamento absoluto em mobile */
+    margin-bottom: 20px;
+  }
+  .logo-name {
+    font-size: 2.5em;
+    margin-top: 0; /* Garante que o título está no topo do content-section em mobile */
+    margin-bottom: 15px; /* Ajuste o espaçamento */
+  }
+
+  .introduction-text {
+    font-size: 1.1em;
+    margin-top: 0; /* Já que o h1 está logo acima */
+  }
+
+  .buttons-section {
+    justify-content: center;
+  }
+
+  .hero-image {
+    order: 1; /* Coloca a imagem no topo em mobile */
+    max-width: 90%;
+    margin-bottom: 30px;
+  }
+
+  .image-placeholder img {
+    width: 100%;
+    max-width: 300px; /* Limita o tamanho da imagem em mobile */
+    height: auto;
+  }
+
+  .pilar-card {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+
+  .div-aviso-educativo {
+    width: 100%;
+    padding: 0 20px; /* Adiciona padding lateral para que o aviso não cole nas bordas */
+    box-sizing: border-box;
+    margin-bottom: 30px; /* Ajusta margem inferior em mobile */
+  }
+
+  /* 2. Ajuste a largura do ELEMENTO DO AVISO para 100% (dentro do padding) */
+  .aviso-educativo {
+    width: 100%; /* Ocupa a largura total disponível */
+    font-size: 1em; /* Reduz o tamanho da fonte para mobile */
+    padding: 15px 15px; /* Ajusta o padding interno */
+
+    /* A ANIMAÇÃO CONTINUA FUNCIONANDO */
+    animation: pulse-aviso 2s infinite;
+  }
+}

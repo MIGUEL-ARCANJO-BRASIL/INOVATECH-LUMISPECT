@@ -1,0 +1,213 @@
+/* ================================= */
+/* ESTILOS GERAIS DO MODAL DE CLÍNICAS */
+/* ================================= */
+
+/* Fundo Escuro do Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+/* Conteúdo Principal do Modal */
+.clinic-modal-content {
+  background: white;
+  padding: 35px;
+  border-radius: 12px;
+  max-width: 700px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Botão de Fechar no topo (Posição Absoluta) */
+.modal-close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+}
+
+.modal-close-button:hover {
+  color: var(--destaque-azul);
+}
+
+/* Título e Subtítulo */
+.clinic-modal-title {
+  color: var(--destaque-azul);
+  font-size: 1.8em;
+  font-weight: 800;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.clinic-modal-title .modal-icon {
+  margin-right: 10px;
+  font-size: 1.1em;
+}
+
+.clinic-modal-subtitle {
+  font-size: 1em;
+  color: #666;
+  margin-bottom: 30px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+/* ================================= */
+/* LISTA DE CLÍNICAS */
+/* ================================= */
+.clinic-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.clinic-item-card {
+  background-color: #f7f9fc;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 5px solid var(--amarelo-destaque);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* NOVO: Contêiner para alinhar nome e botão lado a lado */
+.clinic-header-row {
+  display: flex;
+  justify-content: space-between; /* Espaço entre o nome e o botão */
+  align-items: center; /* Alinha verticalmente no centro */
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd; /* A linha separadora que você pediu */
+}
+
+.clinic-name {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: var(--texto-principal);
+  margin: 0; /* Remove margens do h3 para alinhamento */
+  flex-grow: 1; /* Permite que o nome ocupe o espaço restante */
+}
+
+.clinic-address {
+  font-size: 0.95em;
+  color: #555;
+  margin-bottom: 0; /* Remove margem inferior */
+}
+
+.clinic-address .fa-map-marker-alt {
+  color: #dc3545;
+  margin-right: 8px;
+}
+
+/* Botão do Google Maps INLINE (ajustado) */
+.maps-button-inline {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0; /* Impede que o botão encolha */
+  gap: 6px;
+  padding: 8px 12px; /* Reduzido o padding para ser mais compacto */
+  background-color: transparent;
+  color: var(--destaque-azul);
+  border: 2px solid var(--destaque-azul);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85em; /* Reduzido o tamanho da fonte */
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+.maps-button-inline:hover {
+  background-color: rgba(75, 140, 245, 0.05);
+  transform: translateY(-1px);
+}
+
+/* Removido o estilo .maps-button original que era de bloco */
+
+/* ================================= */
+/* RODAPÉ E DISCLAIMER */
+/* ================================= */
+.modal-footer-disclaimer {
+  margin-top: 30px;
+  padding: 15px;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  font-size: 0.9em;
+  color: #666;
+  text-align: center;
+}
+
+/* CONTÊINER PARA ALINHAR O BOTÃO DE FECHAR À DIREITA */
+.modal-footer-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end; /* ALINHA À DIREITA */
+}
+
+/* Botão de Fechar Ação no Rodapé do Modal */
+.action-button.modal-close-action {
+  background-color: #e0e0e0;
+  color: var(--texto-principal);
+  border: 1px solid #ccc;
+  padding: 12px 25px;
+  font-weight: 600;
+  width: auto;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.action-button.modal-close-action:hover {
+  background-color: #ccc;
+}
+
+/* ================================= */
+/* RESPONSIVIDADE */
+/* ================================= */
+@media (max-width: 768px) {
+  .clinic-modal-content {
+    padding: 25px 15px;
+    max-height: 95vh;
+  }
+  .clinic-modal-title {
+    font-size: 1.5em;
+  }
+
+  /* Na versão mobile, forçamos o botão para a linha de baixo para não quebrar */
+  .clinic-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .clinic-name {
+    margin-bottom: 10px;
+  }
+  .maps-button-inline {
+    width: 100%;
+    justify-content: center;
+    font-size: 1em;
+    padding: 10px 15px;
+  }
+
+  /* Rodapé de fechar */
+  .action-button.modal-close-action {
+    width: 100%;
+  }
+  .modal-footer-actions {
+    justify-content: center;
+  }
+}

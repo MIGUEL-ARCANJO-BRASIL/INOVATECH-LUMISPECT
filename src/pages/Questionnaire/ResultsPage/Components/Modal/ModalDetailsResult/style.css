@@ -1,0 +1,249 @@
+/* ================================= */
+/* ESTILOS DO MODAL DE DETALHES */
+/* ================================= */
+
+/* Fundo Escuro do Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Fundo escuro semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Garante que fique acima de todo o conteúdo da página */
+  overflow-y: auto; /* Permite rolar se o conteúdo for grande */
+}
+
+/* Conteúdo Principal do Modal */
+.modal-content {
+  background: var(--fundo-card);
+  padding: 35px;
+  border-radius: 12px;
+  max-width: 700px;
+  width: 90%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  position: relative;
+  max-height: 90vh; /* Limita a altura do modal na tela */
+  overflow-y: auto; /* Adiciona rolagem interna, se necessário */
+}
+
+/* Botão de Fechar (X) */
+.modal-close-button {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+}
+
+.modal-close-button:hover {
+  color: var(--destaque-azul);
+}
+
+/* Título Principal do Modal */
+.modal-title {
+  color: var(--destaque-azul);
+  font-size: 2em;
+  margin-bottom: 5px;
+  font-weight: 800;
+}
+/* Esconde o cabeçalho principal na impressão para evitar duplicação */
+
+/* Subtítulo/Descrição no Modal */
+.modal-subtitle {
+  font-size: 0.9em;
+  color: #888;
+  margin-bottom: 25px;
+}
+
+/* Seção de Resumo do Resultado no Modal */
+.result-summary-box {
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-align: left;
+  color: white; /* Cor do texto no resumo */
+}
+
+.result-summary-box.high {
+  background-color: #dc3545; /* Vermelho forte para high score */
+}
+
+.result-summary-box.medium {
+  background-color: var(--amarelo-destaque); /* Amarelo para medium score */
+  color: var(--texto-principal);
+}
+
+.result-summary-box.low {
+  background-color: var(--destaque-azul); /* Azul para low score */
+}
+
+.summary-title {
+  font-size: 1.4em;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.summary-score,
+.summary-category,
+.summary-recommendation {
+  margin-bottom: 5px;
+  font-size: 1em;
+}
+
+/* Divisor dentro do Modal */
+.modal-divider {
+  width: 100%;
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+}
+
+/* Botão para Mostrar/Ocultar Detalhes (Novo) */
+.action-button.detail-toggle-button {
+  background-color: #f0f0f0;
+  color: var(--texto-principal);
+  border: 1px solid #ccc;
+  width: 100%; /* Ocupa a largura total */
+  margin-bottom: 20px;
+  font-size: 1em;
+  padding: 12px 20px;
+}
+.action-button.detail-toggle-button:hover {
+  background-color: #e5e5e5;
+}
+
+/* Lista de Respostas Detalhadas */
+.response-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.response-item {
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  background-color: #f9f9f9;
+}
+
+.response-id {
+  font-weight: 700;
+  color: var(--destaque-azul);
+  font-size: 1.1em;
+  margin-bottom: 5px;
+}
+
+.response-question {
+  font-weight: 500;
+  color: var(--texto-principal);
+  margin: 0 0 5px 0;
+}
+
+.response-answer {
+  font-style: italic;
+  font-weight: 700;
+  color: #555;
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  align-self: flex-start; /* Para que o span não ocupe toda a largura */
+}
+
+/* Seção de Ações (Compartilhamento e PDF) */
+.modal-actions-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+  padding-top: 15px;
+  border-top: 1px dashed #ccc;
+  text-align: center;
+}
+
+.modal-actions-group .download-button {
+  background-color: var(--destaque-azul); /* Cor primária para PDF/Imprimir */
+  color: white;
+}
+.modal-actions-group .download-button:hover {
+  background-color: #3a68c0;
+}
+
+.share-prompt {
+  font-weight: 600;
+  color: var(--texto-principal);
+  margin: 5px 0 10px 0;
+}
+
+.share-buttons-group {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.share-buttons-group button {
+  /* Define o tamanho base dos botões de compartilhamento */
+  flex-grow: 1;
+  max-width: 200px;
+}
+
+.share-button.whatsapp-button {
+  background-color: #25d366;
+  color: white;
+}
+.share-button.whatsapp-button:hover {
+  background-color: #128c7e;
+}
+
+/* Botão de Fechar Ação no Rodapé do Modal */
+.modal-close-action {
+  margin-top: 30px;
+  background-color: var(--destaque-azul);
+  color: white;
+  width: 100%;
+  border: none;
+  padding: 12px;
+  font-weight: 700;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transicao);
+}
+
+.modal-close-action:hover {
+  background-color: #3a68c0;
+}
+
+/* ================================= */
+/* RESPONSIVIDADE DO MODAL (Mobile) */
+/* ================================= */
+@media (max-width: 768px) {
+  .modal-content {
+    padding: 25px 15px;
+    max-height: 95vh;
+  }
+
+  .modal-title {
+    font-size: 1.8em;
+  }
+
+  .share-buttons-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .modal-actions-group button {
+    width: 100%;
+    max-width: none; /* Permite que os botões de compartilhamento se estiquem */
+  }
+}
+

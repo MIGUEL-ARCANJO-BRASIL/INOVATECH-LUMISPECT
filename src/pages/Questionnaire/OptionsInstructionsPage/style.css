@@ -1,0 +1,173 @@
+.instructions-page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--fundo-cinza-gelo);
+  margin-top: 0;
+}
+
+.instructions-main {
+  flex-grow: 1;
+  width: 100%;
+  padding: 50px 20px 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.instructions-content {
+  max-width: 900px;
+  width: 100%;
+  text-align: center;
+}
+
+.instructions-title {
+  font-size: 2.8em;
+  font-weight: 800;
+  color: var(--destaque-azul);
+  margin-bottom: 15px;
+}
+
+.instructions-intro {
+  font-size: 1.2em;
+  color: var(--texto-principal);
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ================================= */
+/* GRID DE PEÇAS (INSTRUÇÕES) */
+/* ================================= */
+.pieces-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Duas colunas em desktop */
+  gap: 30px;
+  margin-bottom: 50px;
+}
+
+.piece-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  border-left: 8px solid; /* Borda lateral colorida */
+}
+
+/* Hover para dar um destaque sutil */
+.piece-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilização das cores da borda lateral */
+.piece-card.green {
+  border-color: #7ed321;
+}
+.piece-card.blue {
+  border-color: #4a90e2;
+}
+.piece-card.yellow {
+  border-color: #f8e71c;
+}
+.piece-card.red {
+  border-color: #d0021b;
+}
+
+.piece-image-guide {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-right: 20px;
+  flex-shrink: 0; /* Impede que a imagem encolha */
+}
+
+.piece-details h3 {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: var(--texto-principal);
+  margin-bottom: 5px;
+  width: 80%;
+}
+
+.piece-details .piece-description {
+  font-size: 0.92em;
+  color: var(--cor-secundaria);
+  line-height: 1.5;
+  text-align: left;
+}
+
+/* ================================= */
+/* BOTÃO DE AÇÃO */
+/* ================================= */
+.action-buttons-section {
+  margin-top: 40px;
+  justify-content: center;
+}
+
+.start-button {
+  text-decoration: none;
+  padding: 15px 40px;
+  border-radius: 8px;
+  font-size: 1.1em;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--amarelo-destaque);
+  color: #333;
+  border: 2px solid var(--amarelo-destaque);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.start-button:hover {
+  background-color: #f7e37c;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ================================= */
+/* RESPONSIVIDADE */
+/* ================================= */
+@media (max-width: 768px) {
+  .instructions-title {
+    font-size: 2em;
+  }
+
+  .pieces-grid {
+    grid-template-columns: 1fr; /* Coluna única em mobile */
+    gap: 20px;
+  }
+
+  .piece-card {
+    flex-direction: column; /* Pilha a imagem e o texto */
+    text-align: center;
+    padding: 20px;
+  }
+
+  .piece-image-guide {
+    width: 60px;
+    height: 60px;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .piece-details h3 {
+    font-size: 1.2em;
+  }
+
+  .piece-details .piece-description {
+    font-size: 0.9em;
+  }
+
+  .start-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

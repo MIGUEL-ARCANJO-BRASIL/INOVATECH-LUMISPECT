@@ -1,0 +1,191 @@
+.instructions-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* ⬅️ Novo: Centraliza o conteúdo horizontalmente */
+  background-color: var(--fundo-cinza-gelo);
+}
+
+.instructions-main {
+  /* Compensa o Header fixo */
+  padding-top: var(--altura-header);
+  flex-grow: 1; /* Garante que ocupe todo o espaço disponível */
+  display: flex;
+  justify-content: center;
+  padding-bottom: 50px; /* Espaço antes do footer */
+}
+
+.instructions-content {
+  width: 90%;
+  margin: 40px auto;
+  text-align: center;
+}
+
+/* Títulos */
+.instructions-title {
+  font-size: 3em;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.instructions-title .title-prefix {
+  color: var(--texto-principal); /* Garante que é o preto/cinza escuro */
+  font-weight: 800; /* Mantém o peso do h1 */
+}
+
+/* Estilo para "Lumispect" (Azul Destaque) */
+.instructions-title .title-highlight {
+  color: var(--destaque-azul); /* Usa a cor do projeto */
+  font-weight: 800; /* Mantém o peso do h1 */
+  
+}
+.instructions-subtitle {
+  font-size: 1.5em;
+  color: var(--texto-principal);
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+.divider {
+  width: 100px;
+  height: 3px;
+  background-color: var(--amarelo-destaque);
+  border: none;
+  margin: 20px auto 50px;
+  border-radius: 5px;
+}
+
+/* Container de 4 Itens (Steps) */
+.steps-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 60px;
+  flex-wrap: wrap; /* Para responsividade */
+}
+
+.step-card {
+  background-color: white;
+  padding: 30px 20px;
+  border-radius: 12px;
+  box-shadow: var(--sombra-clara);
+  flex: 1 1 200px; /* Flexbox para 4 itens, mínimo de 200px */
+  min-width: 200px;
+  transition: transform 0.3s;
+}
+
+.step-card:hover {
+  transform: translateY(-5px);
+}
+
+.step-icon {
+  font-size: 3em;
+  color: var(--destaque-azul);
+  margin-bottom: 15px;
+  display: block;
+}
+
+.step-title {
+  font-size: 1.3em;
+  color: var(--texto-principal);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.step-text {
+  color: var(--cor-secundaria);
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
+/* Seção Inferior (Texto e Botão) */
+.ready-section {
+  width: 50%;
+  margin: auto;
+  align-items: center;
+}
+.ready-text {
+  justify-content: center;
+  font-size: 1.2em;
+  color: var(--texto-principal);
+  margin-bottom: 30px;
+}
+
+/* Estilo do botão (usando classes da Home.css para consistência) */
+.start-button {
+  text-decoration: none;
+  padding: 15px 35px;
+  font-size: 1.2em;
+}
+
+/* ⚠️ Nota: As classes .button e .primary-button devem ser importadas
+ * ou definidas globalmente/em um arquivo compartilhado. 
+ * Se elas só existirem em Home.css, copie os estilos básicos para Instructions.css. */
+
+/* ==================================== */
+/* RESPONSIVIDADE */
+/* ==================================== */
+@media (max-width: 850px) {
+  .instructions-title {
+    font-size: 2.5em;
+  }
+
+  .instructions-subtitle {
+    font-size: 1.3em;
+  }
+
+  .steps-container {
+    gap: 20px;
+    padding: 0 10px; /* Adiciona um pouco de padding lateral */
+  }
+
+  .step-card {
+    /* Mantém 2 cards por linha */
+    flex: 1 1 calc(50% - 10px); /* Ajusta o cálculo da largura */
+    min-width: unset; /* Remove min-width fixo para maior flexibilidade */
+  }
+}
+
+/* Mobile (max-width: 550px) */
+@media (max-width: 550px) {
+  .instructions-main {
+    padding-bottom: 30px; /* Menos espaço no final em mobile */
+  }
+
+  .instructions-title {
+    font-size: 1.8em;
+  }
+
+  .instructions-subtitle {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+  }
+
+  .step-card {
+    /* Força 1 card por linha */
+    flex: 1 1 100%;
+    margin-bottom: 10px; /* Adiciona margem entre os cards empilhados */
+    padding: 25px 15px;
+  }
+
+  .step-icon {
+    font-size: 2.5em; /* Reduz o tamanho do ícone */
+  }
+
+  .step-title {
+    font-size: 1.2em;
+  }
+
+  .ready-section {
+    width: 95%; /* Ocupa quase toda a largura para melhor visualização do texto */
+  }
+
+  .ready-text {
+    font-size: 1em;
+    padding: 0 10px;
+  }
+
+  .start-button {
+    padding: 12px 25px; /* Reduz o tamanho do botão */
+    font-size: 1.1em;
+  }
+}
