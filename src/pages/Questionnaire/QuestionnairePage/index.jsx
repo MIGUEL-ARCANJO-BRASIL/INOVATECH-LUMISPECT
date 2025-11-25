@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "./style.css";
-import Header from "../../../components/Layout/Header";
-import Footer from "../../../components/Layout/Footer";
 import { useNavigate } from "react-router-dom";
 
 import BLUE_PIECE from "../../../assets/p-azul.png";
@@ -139,7 +137,24 @@ const QuestionnairePage = () => {
     return index < TOTAL_QUESTIONS ? index : 0;
   });
 
+  // controla se deve bloquear atualização/fechamento desta página
+  const [shouldBlock, setShouldBlock] = useState(true);
+
   const navigate = useNavigate();
+
+  // BLOQUEIA F5/FECHAR ABA ENQUANTO ESTIVER NO QUESTIONÁRIO
+  useEffect(() => {
+    if (!shouldBlock) return;
+
+    const handleBeforeUnload = (event) => {
+      event.preventDefault();
+      event.returnValue =
+        "Tem certeza de que deseja sair? Seu progresso pode ser perdido.";
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, [shouldBlock]);
 
   const handleSubmit = useCallback(
     (finalAnswers) => {
@@ -153,6 +168,8 @@ const QuestionnairePage = () => {
         confirmAnswers
       );
 
+      // libera o bloqueio ao concluir o questionário
+      setShouldBlock(false);
       navigate("/results");
     },
     [navigate]
@@ -272,8 +289,6 @@ const QuestionnairePage = () => {
           <ColorKey />
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 };
