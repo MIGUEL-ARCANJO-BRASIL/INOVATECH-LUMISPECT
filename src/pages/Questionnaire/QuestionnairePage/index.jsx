@@ -4,19 +4,13 @@ import Header from "../../../components/Layout/Header";
 import Footer from "../../../components/Layout/Footer";
 import { useNavigate } from "react-router-dom";
 
-// Importações das imagens das peças (deve estar no caminho correto)
 import BLUE_PIECE from "../../../assets/p-azul.png";
 import RED_PIECE from "../../../assets/p-vermelho.png";
 import YELLOW_PIECE from "../../../assets/p-amarelo.png";
 import GREEN_PIECE from "../../../assets/p-verde.png";
 
-// Chaves de armazenamento
-const STORAGE_KEY_ANSWERS = "questionnaireResultsFinal"; // Resultados finais
-const STORAGE_KEY_INDEX = "currentQuestionIndex"; // Índice de progresso
-
-// ===========================================
-// 1. CONSTANTES DE OPÇÕES
-// ===========================================
+const STORAGE_KEY_ANSWERS = "questionnaireResultsFinal";
+const STORAGE_KEY_INDEX = "currentQuestionIndex";
 
 const BASE_OPTIONS_MAP = {
   "Concordo totalmente": {
@@ -41,15 +35,13 @@ const BASE_OPTIONS_MAP = {
   },
 };
 
-// A ORDEM DESTA ARRAY DEFINE A ORDEM NO GRID
 const BASE_OPTIONS = [
-  "Concordo totalmente", // 1. VERDE
-  "Concordo parcialmente", // 2. AZUL
-  "Discordo parcialmente", // 3. AMARELO
-  "Discordo totalmente", // 4. VERMELHO
+  "Concordo totalmente",
+  "Concordo parcialmente",
+  "Discordo parcialmente",
+  "Discordo totalmente",
 ];
 
-// 2. MATRIZES DE PERGUNTAS
 const baseQuestions = [
   {
     id: 1,
@@ -106,9 +98,6 @@ const baseQuestions = [
 const allQuestions = [...baseQuestions];
 const TOTAL_QUESTIONS = allQuestions.length;
 
-// ===========================================
-// COMPONENTE AUXILIAR: Legenda de Cores
-// ===========================================
 const ColorKey = () => (
   <div className="color-key-legend">
     <h3 className="key-title">Respostas:</h3>
@@ -124,7 +113,6 @@ const ColorKey = () => (
               alt={`${data.color} piece`}
               className="key-image"
             />
-
             <span className="key-label">{optionText}</span>
           </div>
         );
@@ -133,15 +121,9 @@ const ColorKey = () => (
   </div>
 );
 
-// ===========================================
-// COMPONENTE PRINCIPAL
-// ===========================================
-
 const QuestionnairePage = () => {
   const [answers, setAnswers] = useState(() => {
-    // Tenta carregar resultados finais (se houver) do localStorage
     const savedAnswers = localStorage.getItem(STORAGE_KEY_ANSWERS);
-    // Se não houver, tenta carregar progresso do sessionStorage (respostas em andamento)
     if (!savedAnswers) {
       const savedProgress = sessionStorage.getItem(
         "questionnaireAnswersProgress"
@@ -157,15 +139,24 @@ const QuestionnairePage = () => {
     return index < TOTAL_QUESTIONS ? index : 0;
   });
 
+  // Resposta apenas da pergunta atual (para controle visual)
+  // Nota: Este estado 'currentAnswer' não é usado na renderização final (isSelected),
+  // mas o 'useEffect' abaixo tenta limpá-lo ao mudar de questão.
+  const [_currentAnswer, setCurrentAnswer] = useState(null);
+
   const navigate = useNavigate();
 
-  // ✅ Gravação final usando localStorage e navegação imediata
+  // Sempre que mudar de pergunta, zera a seleção visual (embora ineficaz,
+  // pois a renderização usa 'answers[currentQuestion.id]').
+  useEffect(() => {
+    setCurrentAnswer(null);
+  }, [currentQuestionIndex]);
+
   const handleSubmit = useCallback(
     (finalAnswers) => {
-      // 1. GRAVAÇÃO FINAL (AGORA NO LOCALSTORAGE)
       localStorage.setItem(STORAGE_KEY_ANSWERS, JSON.stringify(finalAnswers));
       sessionStorage.removeItem(STORAGE_KEY_INDEX);
-      sessionStorage.removeItem("questionnaireAnswersProgress"); // Limpa o progresso
+      sessionStorage.removeItem("questionnaireAnswersProgress");
 
       const confirmAnswers = localStorage.getItem(STORAGE_KEY_ANSWERS);
       console.log(
@@ -173,7 +164,6 @@ const QuestionnairePage = () => {
         confirmAnswers
       );
 
-      // 2. NAVEGAÇÃO IMEDIATA
       navigate("/results");
     },
     [navigate]
@@ -184,10 +174,12 @@ const QuestionnairePage = () => {
       const nextIndex = currentQuestionIndex + 1;
 
       if (nextIndex < TOTAL_QUESTIONS) {
-        // Se ainda houver perguntas, avança o índice
+        const nextQuestionId = allQuestions[nextIndex].id;
+        const cleanedAnswers = { ...newAnswers };
+        delete cleanedAnswers[nextQuestionId]; // limpa qualquer lixo antigo (mantendo o estado limpo)
+        setAnswers(cleanedAnswers);
         setCurrentQuestionIndex(nextIndex);
       } else {
-        // Se for a última pergunta, submete com as respostas completas
         handleSubmit(newAnswers);
       }
     },
@@ -195,23 +187,23 @@ const QuestionnairePage = () => {
   );
 
   const handleAnswer = (id, value) => {
-    let newAnswers;
     const isTogglingOff = answers[id] === value;
+    let newAnswers;
 
     if (isTogglingOff) {
       newAnswers = { ...answers };
       delete newAnswers[id];
       setAnswers(newAnswers);
     } else {
+      // 1. Adiciona a resposta ao estado temporário
       newAnswers = { ...answers, [id]: value };
       setAnswers(newAnswers);
 
-      // Chamada síncrona/imediata
+      // 2. Chama a próxima pergunta (e o avanço é acionado)
       handleNext(newAnswers);
     }
   };
 
-  // Efeito para salvar o progresso (respostas em andamento) e índice sempre que eles mudam
   useEffect(() => {
     sessionStorage.setItem(
       "questionnaireAnswersProgress",
@@ -243,7 +235,14 @@ const QuestionnairePage = () => {
                 <i className="fas fa-arrow-left"></i> Voltar
               </button>
 
-              <div className="question-card single-question-view">
+              {/* VITAL: Adicionar a 'key' do ID da pergunta. 
+                Isso força o React a tratar este div como um elemento novo 
+                a cada mudança de pergunta, resolvendo o problema visual de seleção.
+              */}
+              <div
+                key={currentQuestion.id}
+                className="question-card single-question-view"
+              >
                 <p className="question-progress">
                   Pergunta {currentQuestionIndex + 1} de {TOTAL_QUESTIONS} (
                   {answeredCount} respondida{answeredCount !== 1 ? "s" : ""})
@@ -257,7 +256,6 @@ const QuestionnairePage = () => {
 
                 <p className="question-text">{currentQuestion.text}</p>
 
-                {/* GRID DE CORES 2x2: A ordem é definida por BASE_OPTIONS */}
                 <div className="answer-options color-grid-options">
                   {currentQuestion.options.map((optionText) => {
                     const optionData = BASE_OPTIONS_MAP[optionText];
