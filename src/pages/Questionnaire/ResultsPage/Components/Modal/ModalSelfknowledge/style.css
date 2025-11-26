@@ -127,5 +127,8 @@
   background-color: var(--cor-secundaria);
 }
 .action-button.modal-close-action.primary-action {
-  background-color: var(--amarelo-destaque);
+  background-color: #ef4444;
+}
+.action-button.modal-close-action.primary-action:hover {
+  background-color: #ab3030;
 }

@@ -36,7 +36,6 @@
 .instructions-title .title-highlight {
   color: var(--destaque-azul); /* Usa a cor do projeto */
   font-weight: 800; /* Mantém o peso do h1 */
-  
 }
 .instructions-subtitle {
   font-size: 1.5em;

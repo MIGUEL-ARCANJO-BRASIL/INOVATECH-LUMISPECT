@@ -174,6 +174,9 @@
 .modal-actions-group .download-button {
   background-color: var(--destaque-azul); /* Cor primária para PDF/Imprimir */
   color: white;
+  margin: auto;
+  width: 50%;
+  margin-bottom: 20px;
 }
 .modal-actions-group .download-button:hover {
   background-color: #3a68c0;
@@ -207,21 +210,22 @@
 }
 
 /* Botão de Fechar Ação no Rodapé do Modal */
-.modal-close-action {
+.action-button.modal-close-action {
   margin-top: 30px;
-  background-color: var(--destaque-azul);
+  background-color: #ef4444;
   color: white;
-  width: 100%;
+  width: 22%;
   border: none;
   padding: 12px;
-  font-weight: 700;
+  font-weight: 600;
+  font-size: 16px;
   border-radius: 8px;
   cursor: pointer;
   transition: var(--transicao);
 }
 
-.modal-close-action:hover {
-  background-color: #3a68c0;
+.action-button.modal-close-action:hover {
+  background-color: #ab3030;
 }
 
 /* ================================= */

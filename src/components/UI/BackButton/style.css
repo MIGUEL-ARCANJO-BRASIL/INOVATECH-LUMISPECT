@@ -1,20 +1,23 @@
 .back-button-global {
-  display: inline-flex;
+  position: absolute;
+  top: -10px; /* ajusta a distância do topo do container */
+  left: 0;
+  z-index: 10;
+  background-color: var(--azul-claro);
+  border: 2px solid var(--destaque-azul);
+  color: var(--destaque-azul);
+  font-weight: 600;
+  padding: 10px 15px;
+  font-size: 0.95em;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transicao);
+  display: flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: none;
-  background-color: rgba(255, 255, 255, 0.18);
-  color: #333;
-  font-size: 0.95rem;
-  font-weight: 500;
-  cursor: pointer;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 14px rgba(5, 8, 22, 0.3);
-  transition: background-color 0.2s ease, transform 0.1s ease,
-    box-shadow 0.2s ease;
+  box-shadow: var(--sombra-leve);
 }
+
 .back-button-global:hover {
   background-color: rgba(255, 255, 255, 0.26);
   transform: translateY(-1px);
@@ -23,4 +26,13 @@
 
 .back-button-icon {
   font-size: 0.9rem;
+}
+
+@media (max-width: 550px) {
+  .back-button-global {
+    top: -5px;
+    left: 0;
+    padding: 8px 12px;
+    font-size: 0.9em;
+  }
 }

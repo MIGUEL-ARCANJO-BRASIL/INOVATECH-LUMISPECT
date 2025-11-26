@@ -20,7 +20,7 @@ const Instructions = () => {
     },
     {
       icon: "fas fa-check-double",
-      title: "Escolha o Grau",
+      title: "Escolha a Opção",
       text: "Selecione a opção que melhor reflete sua experiência: (Concordo/Discordo totalmente, Sempre/Nunca, etc.).",
     },
     {
@@ -35,10 +35,6 @@ const Instructions = () => {
       <main className="instructions-main">
         {/* Conteúdo Centralizado */}
         <div className="instructions-content">
-          {/* <div style={{ textAlign: "left", marginBottom: "20px" }}>
-            <BackButton />
-          </div> */}
-
           <h1 className="instructions-title">
             <span className="title-prefix">Guia para o</span>
             <span className="title-highlight"> Questionário Lumispect</span>

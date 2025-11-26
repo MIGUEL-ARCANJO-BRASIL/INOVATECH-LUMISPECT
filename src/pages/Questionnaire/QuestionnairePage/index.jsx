@@ -207,6 +207,13 @@ const QuestionnairePage = () => {
       handleNext(newAnswers);
     }
   };
+  const handlePrev = () => {
+    // se já está na primeira, não faz nada
+    if (currentQuestionIndex === 0) return;
+
+    const prevIndex = currentQuestionIndex - 1;
+    setCurrentQuestionIndex(prevIndex);
+  };
 
   useEffect(() => {
     sessionStorage.setItem(
@@ -231,8 +238,9 @@ const QuestionnairePage = () => {
           <div className="main-content-wrapper">
             <div className="question-section">
               <button
-                onClick={() => navigate(-1)}
+                onClick={handlePrev}
                 className="nav-button back-to-game top-left-button"
+                disabled={currentQuestionIndex === 0}
               >
                 <i className="fas fa-arrow-left"></i> Voltar
               </button>
