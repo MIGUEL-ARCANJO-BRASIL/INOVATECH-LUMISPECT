@@ -232,6 +232,12 @@
 /* RESPONSIVIDADE DO MODAL (Mobile) */
 /* ================================= */
 @media (max-width: 768px) {
+  .modal-actions-group .download-button {
+    width: 100%;
+  }
+  .action-button.modal-close-action {
+    width: 100%;
+  }
   .modal-content {
     padding: 25px 15px;
     max-height: 95vh;
