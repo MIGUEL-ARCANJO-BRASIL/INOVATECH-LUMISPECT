@@ -23,9 +23,18 @@
   letter-spacing: 1px;
 }
 
-.header-logo:hover {
-  color: var(--amarelo-destaque);
+@media (hover: hover) and (pointer: fine) {
+  .header-logo:hover {
+    color: var(--amarelo-destaque);
+  }
 }
+
+.header-logo:focus,
+.header-logo:active {
+  outline: none;
+  color: var(--fundo-cinza-gelo);
+}
+
 .header-nav a {
   color: white;
   text-decoration: none;

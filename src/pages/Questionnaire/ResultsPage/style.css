@@ -360,16 +360,11 @@
 /* Botão Refazer (Secundário) */
 
 .action-button.retake-button {
-  background-color: #e0e0e0;
-
+  background-color: var(--amarelo-destaque);
   color: var(--texto-principal);
-
   border: 2px solid #ccc;
-
   padding: 12px 25px;
-
   font-size: 1em;
-
   font-weight: 600;
 }
 
