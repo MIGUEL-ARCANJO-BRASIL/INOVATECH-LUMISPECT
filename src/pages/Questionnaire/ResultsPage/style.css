@@ -295,6 +295,10 @@
   background-color: #ccc;
 }
 
+.action-button.retake-button:hover {
+  background-color: #f7e37c;
+  transform: translateY(-5px);
+}
 /* ================================= */
 
 /* BOTÕES DE AÇÃO ABAIXO DO CARD */
@@ -368,10 +372,6 @@
   font-weight: 600;
 }
 
-.action-button.retake-button:hover {
-  background-color: #ccc;
-}
-
 /* Botão Concluir (Primário) */
 
 .action-button.finish-button {
@@ -393,7 +393,7 @@
 .action-button.finish-button:hover {
   background-color: #3a68c0;
 
-  transform: translateY(-2px);
+  transform: translateY(-5px);
 }
 
 /* ================================= */
@@ -404,12 +404,10 @@
 
 .results-action-footer {
   background-color: white; /* Fundo branco para a faixa de rodapé */
-
   padding: 30px 20px;
-
   width: 100%;
-
   border-top: 1px solid #ddd;
+  margin-top: 40px;
 }
 
 .div-column {

@@ -108,6 +108,7 @@
 .action-buttons-section {
   margin-top: 40px;
   justify-content: center;
+  margin: auto;
 }
 
 .start-button {

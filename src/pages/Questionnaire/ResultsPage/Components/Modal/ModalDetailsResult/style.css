@@ -228,6 +228,42 @@
   background-color: #ab3030;
 }
 
+.snackbar {
+  position: fixed;
+  left: 24px;
+  bottom: 24px;
+  max-width: 320px;
+  padding: 12px 18px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.35);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  animation: snackbar-slide-in 1s ease-out;
+}
+
+.snackbar-success {
+  background-color: #16a34a; /* verde sucesso */
+}
+
+.snackbar-error {
+  background-color: #dc2626; /* vermelho erro */
+}
+
+@keyframes snackbar-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* ================================= */
 /* RESPONSIVIDADE DO MODAL (Mobile) */
 /* ================================= */
@@ -254,5 +290,11 @@
   .modal-actions-group button {
     width: 100%;
     max-width: none; /* Permite que os botões de compartilhamento se estiquem */
+  }
+  .snackbar {
+    right: 12px;
+    left: 12px;
+    bottom: 16px;
+    max-width: none;
   }
 }

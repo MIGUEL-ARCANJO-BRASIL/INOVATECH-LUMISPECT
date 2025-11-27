@@ -19,8 +19,8 @@ const Home = () => {
           <main className="content-section">
             <h1 className="logo-name">Lumispect</h1>
             <p className="introduction-text">
-              Descubra seus padrões de atenção, foco e velocidade de pensamento
-              através de jogos cognitivos interativos.
+              Descubra seus padrões de atenção e foco através de questionário
+              cognitivo interativo.
             </p>
 
             <div className="buttons-section">
